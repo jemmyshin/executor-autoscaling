@@ -1,0 +1,7 @@
+jtype: AutoscalingExecutor
+py_modules:
+  - __init__.py
+metas:
+  name: AutoscalingExecutor
+  description: Autoscaling testing
+  keywords: [test, autoscaling]

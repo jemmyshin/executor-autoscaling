@@ -1,0 +1,42 @@
+jtype: Flow
+jcloud:
+  version: 3.14.1
+  monitor:
+    traces:
+      enable: false # avoid issue on jcloud side
+with:
+#  port: 51000
+  monitoring: true
+  name: autoscaling-flow
+  prefetch: 5
+  timeout_ready: -1
+  env:
+    JINA_LOG_LEVEL: DEBUG
+gateway:
+  port:
+    - 51000
+    - 52000
+  protocol:
+    - grpc
+    - http
+executors:
+  - name: autoscaling
+    uses: docker://jemfu/executor-autoscaling:0.0.1
+#    uses:
+#      jtype: AutoscalingExecutor
+#      py_modules:
+#        - __init__.py
+    uses_with:
+      init_time: 1
+      process_time: 60
+    env:
+      JINA_LOG_LEVEL: DEBUG
+    timeout_ready: 3600000
+    jcloud:
+      resources:
+        instance: C4
+      autoscale:
+        min: 1
+        max: 5
+        metric: rps
+        target: 10
