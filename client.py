@@ -1,6 +1,11 @@
 from multiprocessing import Process
+from docarray import DocumentArray
 from jina import Client
 import time
+
+
+ITEM_SIZE = 8 / 1024 / 1024  # MB
+EMBEDDING_SIZE = 768
 
 
 class MyProcess(Process):
@@ -8,26 +13,38 @@ class MyProcess(Process):
                  name,
                  host,
                  num_request,
-                 process_time):
+                 process_time,
+                 payload_size):
         super(MyProcess, self).__init__()
         self.name = name
         self.client = Client(host=host)
         self.num_request = num_request
         self.process_time = process_time
+        self.payload_size = payload_size
         self.latency = []
 
     def run(self):
         for i in range(self.num_request):
             print(f"client {self.name} is sending request #{i}")
-            self.send_request(self.process_time)
-            time.sleep(1)
+            self.send_request(self.process_time, self.payload_size)
+            # time.sleep(1)
 
         self.benchmark()
         self.clear()
 
-    def send_request(self, process_time=1):
+    def send_request(self, process_time=1, payload_size=0):
+        import numpy as np
+        payload = np.random.rand(int(payload_size / ITEM_SIZE / EMBEDDING_SIZE),
+                                 EMBEDDING_SIZE) if payload_size else None
+        da = DocumentArray.empty(payload.shape[0]) if payload is not None else None
+        if da:
+            da.embeddings = payload
+
         start_time = time.time()
-        _ = self.client.post('/generate', parameters={'process_time': process_time})
+        _ = self.client.post('/generate',
+                             input=da,
+                             parameters={'process_time': process_time})
+
         self.latency.append(time.time() - start_time)
 
     def benchmark(self):
@@ -38,21 +55,22 @@ class MyProcess(Process):
 
 
 if __name__ == '__main__':
-    num_requests = 100
-    num_clients = 50
+    num_requests = 1000
+    num_clients = 30
     process_time = 1
 
     start_time = time.time()
     process_list = []
     for i in range(num_clients):
-        p = MyProcess(name=f"client {i}",
-                      host='grpcs://funny-whale-28c841cd93-grpc.wolf.jina.ai',
+        _ = MyProcess(name=f"client {i}",
+                      host='grpcs://tough-flounder-a1cc90429d-grpc.wolf.jina.ai',
                       # host='grpc://0.0.0.0:51000',
                       num_request=num_requests,
-                      process_time=process_time
+                      process_time=process_time,
+                      payload_size=1
                       )
-        p.start()
-        process_list.append(p)
+        _.start()
+        process_list.append(_)
 
     for _ in process_list:
         _.join()

@@ -28,15 +28,15 @@ executors:
 #        - __init__.py
     uses_with:
       init_time: 1
-      process_time: 60
+      process_time: 10
     env:
       JINA_LOG_LEVEL: DEBUG
     timeout_ready: 3600000
     jcloud:
       resources:
         instance: C4
-      autoscale:
-        min: 1
-        max: 5
-        metric: rps
-        target: 10
+#      autoscale:
+#        min: 1
+#        max: 5
+#        metric: rps
+#        target: 2
