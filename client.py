@@ -14,7 +14,8 @@ class MyProcess(Process):
                  host,
                  num_request,
                  process_time,
-                 payload_size):
+                 payload_size,
+                 ):
         super(MyProcess, self).__init__()
         self.name = name
         self.client = Client(host=host)
@@ -24,18 +25,18 @@ class MyProcess(Process):
         self.latency = []
 
     def run(self):
+        import numpy as np
+        payload = np.random.rand(int(self.payload_size / ITEM_SIZE / EMBEDDING_SIZE),
+                                 EMBEDDING_SIZE) if self.payload_size else None
+
         for i in range(self.num_request):
             print(f"client {self.name} is sending request #{i}")
-            self.send_request(self.process_time, self.payload_size)
-            # time.sleep(1)
+            self.send_request(self.process_time, payload)
 
         self.benchmark()
         self.clear()
 
-    def send_request(self, process_time=1, payload_size=0):
-        import numpy as np
-        payload = np.random.rand(int(payload_size / ITEM_SIZE / EMBEDDING_SIZE),
-                                 EMBEDDING_SIZE) if payload_size else None
+    def send_request(self, process_time=1, payload=None):
         da = DocumentArray.empty(payload.shape[0]) if payload is not None else None
         if da:
             da.embeddings = payload
@@ -57,17 +58,17 @@ class MyProcess(Process):
 if __name__ == '__main__':
     num_requests = 1000
     num_clients = 30
-    process_time = 1
+    process_time = 0.5
+    payload_size = 0.1
 
     start_time = time.time()
     process_list = []
     for i in range(num_clients):
         _ = MyProcess(name=f"client {i}",
-                      host='grpcs://tough-flounder-a1cc90429d-grpc.wolf.jina.ai',
-                      # host='grpc://0.0.0.0:51000',
+                      host='https://touching-crane-dcc9702e47-http.wolf.jina.ai',
                       num_request=num_requests,
                       process_time=process_time,
-                      payload_size=1
+                      payload_size=payload_size
                       )
         _.start()
         process_list.append(_)
