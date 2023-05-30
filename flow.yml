@@ -8,7 +8,7 @@ with:
 #  port: 51000
   monitoring: true
   name: autoscaling-flow
-  prefetch: 5
+  prefetch: 1
   timeout_ready: -1
   env:
     JINA_LOG_LEVEL: DEBUG
