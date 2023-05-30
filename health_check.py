@@ -1,7 +1,7 @@
 from jina import Client
 import time
 
-host = 'https://organic-moray-b3f659b99c-http.wolf.jina.ai'
+host = ''
 client = Client(host=host)
 
 while 1:

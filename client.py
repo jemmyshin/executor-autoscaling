@@ -65,7 +65,7 @@ if __name__ == '__main__':
     process_list = []
     for i in range(num_clients):
         _ = MyProcess(name=f"client {i}",
-                      host='https://touching-crane-dcc9702e47-http.wolf.jina.ai',
+                      host='',
                       num_request=num_requests,
                       process_time=process_time,
                       payload_size=payload_size
