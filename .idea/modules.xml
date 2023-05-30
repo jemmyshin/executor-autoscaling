@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GRiT/.idea/GRiT.iml" filepath="$PROJECT_DIR$/../GRiT/.idea/GRiT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MaskDINO/.idea/MaskDINO.iml" filepath="$PROJECT_DIR$/../MaskDINO/.idea/MaskDINO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clip-as-service/.idea/clip-as-service.iml" filepath="$PROJECT_DIR$/../clip-as-service/.idea/clip-as-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cv2_super_res/.idea/cv2_super_res.iml" filepath="$PROJECT_DIR$/../cv2_super_res/.idea/cv2_super_res.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../excutor-sam/.idea/excutor-sam.iml" filepath="$PROJECT_DIR$/../excutor-sam/.idea/excutor-sam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../excutor_SwinIR/.idea/excutor_SwinIR.iml" filepath="$PROJECT_DIR$/../excutor_SwinIR/.idea/excutor_SwinIR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/executor-autoscaling.iml" filepath="$PROJECT_DIR$/.idea/executor-autoscaling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../executor-blip2/.idea/executor-blip2.iml" filepath="$PROJECT_DIR$/../executor-blip2/.idea/executor-blip2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../executor-coca/.idea/executor-coca.iml" filepath="$PROJECT_DIR$/../executor-coca/.idea/executor-coca.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../executor-super-resolution/.idea/executor-super-resolution.iml" filepath="$PROJECT_DIR$/../executor-super-resolution/.idea/executor-super-resolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../inference-api/.idea/inference-api.iml" filepath="$PROJECT_DIR$/../inference-api/.idea/inference-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../inference-models/.idea/inference-models.iml" filepath="$PROJECT_DIR$/../inference-models/.idea/inference-models.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../service-super-resolution-main/.idea/service-super-resolution-main.iml" filepath="$PROJECT_DIR$/../service-super-resolution-main/.idea/service-super-resolution-main.iml" />
+    </modules>
+  </component>
+</project>

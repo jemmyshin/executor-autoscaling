@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../GRiT" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../MaskDINO" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../clip-as-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../excutor-sam" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../excutor_SwinIR" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../executor-coca" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../executor-super-resolution" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../inference-api" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../inference-models" vcs="Git" />
+  </component>
+</project>
