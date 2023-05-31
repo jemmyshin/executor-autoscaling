@@ -6,6 +6,9 @@ EMBEDDING_SIZE = 768
 PROCESS_TIME = 1
 PAYLOAD_SIZE = 2  # MB
 
+'''
+remember to set your token in header
+'''
 
 class QuickstartUser(HttpUser):
     # sleep 0.1s after each request
@@ -16,7 +19,7 @@ class QuickstartUser(HttpUser):
         payload = self._construct_payload()
         self.client.post('/post',
                          headers={'Content-Type': 'application/json',
-                                  'Authorization': ''},
+                                  'Authorization': '#YOUR TOKEN HERE#'},
                          json={'data': [{'embedding': payload}],
                                'parameters': {'process_time': PROCESS_TIME},
                                'execEndpoint': '/generate'})

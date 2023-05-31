@@ -14,10 +14,8 @@ with:
     JINA_LOG_LEVEL: DEBUG
 gateway:
   port:
-    - 51000
     - 52000
   protocol:
-    - grpc
     - http
 executors:
   - name: autoscaling
