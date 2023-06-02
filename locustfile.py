@@ -10,19 +10,30 @@ PAYLOAD_SIZE = 2  # MB
 remember to set your token in header
 '''
 
-class QuickstartUser(HttpUser):
+class LoadTestUser(HttpUser):
     # sleep 0.1s after each request
     wait_time = constant(0.1)
 
+    # @task
+    # def send_request(self):
+    #     payload = self._construct_payload()
+    #     self.client.post('/post',
+    #                      headers={'Content-Type': 'application/json',
+    #                               'Authorization': '#YOUR TOKEN HERE#'},
+    #                      json={'data': [{'embedding': payload}],
+    #                            'parameters': {'process_time': PROCESS_TIME},
+    #                            'execEndpoint': '/generate'})
+
     @task
-    def send_request(self):
-        payload = self._construct_payload()
+    def sr_load_test(self):
+        uri = '#YOUR IMAGE HERE#'
         self.client.post('/post',
                          headers={'Content-Type': 'application/json',
                                   'Authorization': '#YOUR TOKEN HERE#'},
-                         json={'data': [{'embedding': payload}],
-                               'parameters': {'process_time': PROCESS_TIME},
-                               'execEndpoint': '/generate'})
+                         json={'data': [{'uri': uri}],
+                               'parameters': {'scale': '-1:1200'},
+                               'execEndpoint': '/upscale'})
+
 
     @staticmethod
     def _construct_payload():
