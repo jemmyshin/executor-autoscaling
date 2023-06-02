@@ -19,14 +19,14 @@ gateway:
     - http
 executors:
   - name: autoscaling
-    uses: docker://jemfu/executor-autoscaling:0.0.1
-#    uses:
-#      jtype: AutoscalingExecutor
-#      py_modules:
-#        - __init__.py
+    #uses: docker://jemfu/executor-autoscaling:0.0.1
+    uses:
+      jtype: AutoscalingExecutor
+      py_modules:
+        - executor.py
     uses_with:
       init_time: 1
-      process_time: 10
+      process_time: 0.01
     env:
       JINA_LOG_LEVEL: DEBUG
     timeout_ready: 3600000
